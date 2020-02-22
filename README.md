@@ -38,12 +38,43 @@ DocImExport presenta en estos momentos las siguientes limitaciones:
 
 # Detalles técnicos
 
-Aunque se trata de un script muy sencillo, me gustaría destacar algunas cosillas.
+Aunque se trata de un script muy sencillo, me gustaría destacar dos cosas.
 
-El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento de una manera tan limpia y elegante como esta:
+Vamos con la primera. El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento concatenando los vectores devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
+```javascript
+// Obtener imágenes que no tienen ajustes de texto y párrafos
+var inlineImages = [...doc.getBody().getImages(), ...doc.getHeader().getImages(), ...doc.getFooter().getImages()];
+
+// Añadir imágenes en línea
+inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
 ```
-  var inlineImages = [...doc.getBody().getImages(), ...doc.getHeader().getImages(), ...doc.getFooter().getImages()];
+Google Google Docs considera elementos de tipo imagen tanto a las imágenes convencionales como a los gráficos de hoja de cálculo (insertados o creados en el documento) y a los dibujos, aunque en este caso solo a los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
+
+Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, `.getImages()` no será capaz de enumerarla. Curiosamente, esto no es así en el caso de que la entidad aparezca en una lista de elementos. Personalmente no encuentro esta decisión de diseño especialemente razonable, pero es lo que hay. Y por eso tenemos que hacer más cosas para identificar el resto de elementos de tipo imagen: deberemos recorrer todos los párrafos para localizar las imágenes que pudiera estar a ellos vinculadas. De esto se encargan estas líneas:
+
+```javascript
+var parrafos = [...doc.getBody().getParagraphs(), ...doc.getHeader().getParagraphs(), ...doc.getFooter().getParagraphs()];
+parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi, tipo: 'positioned'});});});
+```
+Tras esto tendremos en `imagenes[]` un vector de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `img`(la imagen en cuestión, tal y como nos la devuelve la API) y `tipo`que será `['inline | positioned']`en función de si se trata de un elemento libre o vinculado a un párrafo.
+
+La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre cada uno de estos dos tipos de elementos. Dependiendo de cuál se trate en cada caso optaremos por una u otra estrategia a la hora de asignarle un nombre. Aquí tiramos nuevamentel del *músculo* de V8, recurriendo a sus potentes literales (y a las asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esto en una sola línea.
+
+```javascript
+// Exportar imágenes
+// Las imágenes con ajustes de texto no tienen getAltTitle(), getType(), getAttributes()... pero sí getId()
+
+imagenes.map((i, p) => {
+
+  // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen sin título'
+
+  let nombre = `${p + 1} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
+
+  // Exportar imagen en su formato original ¡GIF pierde animación! 😒
+
+  carpetaExp.createFile(i.img.getBlob().setName(nombre));
+});
 ```
 
 # Licencia
