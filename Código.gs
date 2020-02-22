@@ -21,9 +21,7 @@ function onOpen() {
 }
 
 function exportar() {
-  
-  // Opciones: borrar imagenes ya generadas, ¿patrón de nombre?
-  
+    
   var doc = DocumentApp.getActiveDocument();
   var imagenes = [];
   
