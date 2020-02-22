@@ -68,11 +68,9 @@ La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre 
 imagenes.map((i, p) => {
 
   // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen sin título'
-
   let nombre = `${p + 1} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
 
   // Exportar imagen en su formato original ¡GIF pierde animación! 😒
-
   carpetaExp.createFile(i.img.getBlob().setName(nombre));
 });
 ```
