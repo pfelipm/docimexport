@@ -26,7 +26,7 @@ Cada vez que se produce una exportación se elimina la carpeta generada en expor
 # Limitaciones
 DocImExport presenta en estos momentos las siguientes limitaciones:
 - Los dibujos creados directamente dentro del documento no pueden exportarse.
-- Los elementos de tipo GIF animado son exportados sin la animación.
+- Los elementos de tipo GIF animado son exportados de manera estática (pierden la animación).
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
