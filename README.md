@@ -11,10 +11,17 @@ DocImExport genera una carpeta con este nombre:
 
 ![screenshot-drive google com-2020 02 22-01_32_00](https://user-images.githubusercontent.com/12829262/75082309-3c24b680-5513-11ea-8f73-396b39d315c6.png)
 
-Las imágenes se exportan en su formato original (en el caso de los elementos de tipo GIF se pierde, lamentablemente, la animación) y se utiliza esta nomenclatura:
+Las imágenes se exportan en su formato original, aunque desgraciadamente en el caso de los elementos de tipo GIF se pierde la animación). Se utiliza esta nomenclatura:
 
-`Numeral` `Texto alternativo` (si existe) o `Imagen sin título` 
+`Numeral` `Texto alternativo` (si existe) o `Imagen [de párrafo] sin título` 
 
-El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un texto alternativo en imágenes, dibujos y gráficos (visible al situar el ratón sobre ellos) haciendo clic con el botón derecho del ratón y seleccionado `Texto alternativo` o simplemente seleccionado el elemento y presionando `CTRL+ALT+Y`.
+![Selección_999(222)](https://user-images.githubusercontent.com/12829262/75082667-008aec00-5515-11ea-974a-775430328fdb.png)
+
+El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo**, para facilitar su identificación una vez exportados, en imágenes, dibujos y gráficos (visible al situar el ratón sobre ellos) haciendo clic con el botón derecho del ratón y seleccionado `Texto alternativo` o simplemente seleccionado el elemento y presionando `CTRL+ALT+Y`.
 
 ![DocImExport - Documentos de Google](https://user-images.githubusercontent.com/12829262/75082576-92462980-5514-11ea-99a6-5341b03d92ac.gif)
+
+Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo de la carpeta es una estrategia para tratar de realizar su identifición sin errores.
+
+# Licencia
+© 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
