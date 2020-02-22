@@ -4,7 +4,7 @@ DocImExport es un script para documentos de texto de Google que extrae todas las
 - Gráficos procedentes de una hoja de cálculo existente o creada en el propio documento (`Insertar` ⏩ `Gráfico`).
 - Dibujos insertados desde Drive, vinculados o no (`Insertar` ⏩ `Dibujo` ⏩ `De Drive`).
 
-Estos elementos pueden estar situados en el **cuerpo**, **encabezado** o **pie de página**, dentro de tablas o elementos de numeración o viñetas y estar posicionados de manara intercalada, ajustados al texto o intercalados entre otros elementos.
+Estos elementos pueden encontrarse en el **cuerpo**, **encabezado** o **pie de página**, dentro de tablas o elementos de numeración o viñetas y estar posicionados de manera intercalada, ajustados al texto o intercalados entre otros elementos.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75083257-24036600-5518-11ea-989e-9e77ab75fcb4.gif"</p>
 
