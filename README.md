@@ -1,5 +1,5 @@
 # DocImExport
-DocImExport es un script para documentos de texto de Google que extrae todas las imágenes del documento y las archiva en una subcarpeta junto al propio documento. Específicamente, es posible extraer los siguientes elementos:
+DocImExport es un script para documentos de texto de Google que extrae todas las imágenes del documento y las archiva en una subcarpeta junto al propio documento. Específicamente, se extraen los siguientes elementos:
 - Imágenes insertadas (`Insertar` ⏩ `Imagen`).
 - Gráficos procedentes de una hoja de cálculo existente o creada en el propio documento (`Insertar` ⏩ `Gráfico`).
 - Dibujos *insertados* desde Drive, vinculados o no (`Insertar` ⏩ `Dibujo` ⏩ `De Drive`). Los dibujos creados directamente dentro del documento pueden exportarse.
