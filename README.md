@@ -40,7 +40,7 @@ DocImExport presenta en estos momentos las siguientes limitaciones:
 
 Aunque se trata de un script muy sencillo que ha surgido para dar una respuesta rápida a un problema personal, me gustaría destacar dos cosas. Vamos con la primera.
 
-El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento concatenando los vectores devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
+El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los vectores devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
 // Obtener imágenes que no tienen ajustes de texto y párrafos
@@ -59,7 +59,7 @@ parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi
 ```
 Tras esto tendremos en `imagenes[]` un vector de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `.img` (la imagen en cuestión, tal y como nos la proporciona la API) y `.tipo`, que será `['inline | positioned']` en función de si se trata de un elemento libre o vinculado a un párrafo, respectivamente.
 
-La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre cada uno de estos dos tipos de elementos. Si tiramos por la calle de enmedio y los  usamos indiscriminadamente conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí tiraremos nuevamente del *músculo* ES6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
+La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre cada uno de estos dos tipos de elementos. Si tiramos por la calle de enmedio y los  usamos indiscriminadamente conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí tiraremos nuevamente del músculo S6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
 
 ```javascript
 // Exportar imágenes
