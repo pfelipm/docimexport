@@ -20,7 +20,7 @@ Las imágenes se exportan en su formato original, utilizando esta nomenclatura:
 
 ![Selección_999(222)](https://user-images.githubusercontent.com/12829262/75082667-008aec00-5515-11ea-974a-775430328fdb.png)
 
-El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo**, para facilitar su identificación una vez exportados, en imágenes, dibujos y gráficos (visible al situar el ratón sobre ellos) haciendo clic con el botón derecho del ratón y a continuación en `Texto alternativo` o simplemente seleccionado el elemento y presionando `CTRL+ALT+Y`.
+El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo**, para facilitar su identificación una vez exportados, en imágenes, dibujos y gráficos (visible al situar el ratón sobre ellos) haciendo clic con el botón derecho del ratón y a continuación en `Texto alternativo`,  o simplemente seleccionando el elemento y presionando `CTRL+ALT+Y`.
 
 ![DocImExport - Documentos de Google](https://user-images.githubusercontent.com/12829262/75082576-92462980-5514-11ea-99a6-5341b03d92ac.gif)
 
