@@ -35,6 +35,7 @@ Para utilizarlo en tus propios documentos tienes dos posibilidades
 DocImExport presenta en estos momentos las siguientes limitaciones:
 - Los dibujos creados directamente dentro del documento no pueden exportarse.
 - Los elementos de tipo GIF animado son exportados de manera estática (pierden la animación).
+- Los ajustes aplicados sobre las imágenes (recorte, tamaño, recoloración, brillo, contraste...) no se exportan. Lo que obtenemos es la imagen original.
 
 # Detalles técnicos
 
