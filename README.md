@@ -26,10 +26,21 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo de la carpeta es una estrategia para tratar de realizar su identifición sin errores.
 
+Para utilizarlo en tus propios documentos tienes 2 opciones:
+
+1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs`de este repositorio y guarda los cambios.
+2. Hazte una copia de esto :point_right: [DocImExport # plantilla](https://docs.google.com/document/d/1UXYbNEDxyAiqAQ8gFcUno-p53Rp2udo0_JCRsw-7_ro/template/preview) :point_left:.
+
 # Limitaciones
 DocImExport presenta en estos momentos las siguientes limitaciones:
 - Los dibujos creados directamente dentro del documento no pueden exportarse.
 - Los elementos de tipo GIF animado son exportados de manera estática (pierden la animación).
+
+# Detalles técnicos
+
+Aunque se trata de un script muy sencillo, me gustaría destacar algunas cosillas.
+
+Se ejecuta sobre el
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
