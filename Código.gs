@@ -6,7 +6,8 @@
  * - Dibujos *insertados* desde Drive, vinculados o no
  * ...con posicionamiento libre o ajuste de párrafo, en tabla, elementos de numeración o viñetas.
  *
- * Pablo Felip (@pfelipm)
+ * MIT License
+ * Copyright (c) 2020 Pablo Felip Monferrer(@pfelipm)
  *
  * @OnlyCurrentDoc
  */
@@ -14,7 +15,7 @@
 function onOpen() {
  
   DocumentApp.getUi().createMenu('DocImExport')
-    .addItem('Exportar elementos gráficos', 'exportar')
+    .addItem('📥 Exportar elementos gráficos', 'exportar')
     .addToUi();
   
 }
