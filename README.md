@@ -28,7 +28,7 @@ Cada vez que se produce una exportación se elimina la carpeta generada en expor
 
 Para utilizarlo en tus propios documentos tienes 2 opciones:
 
-1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs`de este repositorio y guarda los cambios. Debes ejecutarlo utilizando el nuevo motor JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`)
+1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs`de este repositorio y guarda los cambios. Debes ejecutarlo utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
 2. Hazte una copia de esto :point_right: [DocImExport # plantilla](https://docs.google.com/document/d/1UXYbNEDxyAiqAQ8gFcUno-p53Rp2udo0_JCRsw-7_ro/template/preview) :point_left:.
 
 # Limitaciones
@@ -40,7 +40,11 @@ DocImExport presenta en estos momentos las siguientes limitaciones:
 
 Aunque se trata de un script muy sencillo, me gustaría destacar algunas cosillas.
 
-Se ejecuta sobre el
+El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento de una manera tan limpia y elegante como esta:
+
+```
+  var inlineImages = [...doc.getBody().getImages(), ...doc.getHeader().getImages(), ...doc.getFooter().getImages()];
+```
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
