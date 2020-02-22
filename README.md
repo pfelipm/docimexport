@@ -5,6 +5,8 @@ DocImExport es un script para documentos de texto de Google que extrae todas las
 - Dibujos *insertados* desde Drive, vinculados o no (`Insertar` ⏩ `Dibujo` ⏩ `De Drive`).
 Estos elementos pueden estar situados en el **cuerpo**, **encabezado** y **pie de página** , dentro de tablas o elementos de numeración o viñetas y estar posicionados de manara intercalada, ajustados al texto o dividiéndolo.
 
+![Selección_999(223)](https://user-images.githubusercontent.com/12829262/75083004-b440ab80-5516-11ea-8a39-67299831f195.png)
+
 DocImExport genera una carpeta con este nombre:
 
 `Imágenes` `{nombre del documento}` `-` `{ID del documento]`
