@@ -40,7 +40,7 @@ DocImExport presenta en estos momentos las siguientes limitaciones:
 
 Aunque se trata de un script muy sencillo que ha surgido para dar una respuesta rápida a un problema personal, me gustaría destacar dos cosas. Vamos con la primera.
 
-El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los vectores devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
+El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
 // Obtener imágenes que no tienen ajustes de texto y párrafos
