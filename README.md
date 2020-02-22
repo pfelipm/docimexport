@@ -57,7 +57,7 @@ Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, 
 var parrafos = [...doc.getBody().getParagraphs(), ...doc.getHeader().getParagraphs(), ...doc.getFooter().getParagraphs()];
 parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi, tipo: 'positioned'});});});
 ```
-Tras esto tendremos en `imagenes[]` un vector de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `img` (la imagen en cuestión, tal y como nos la proporciona la API) y `tipo`que será `['inline | positioned']`en función de si se trata de un elemento libre o vinculado a un párrafo.
+Tras esto tendremos en `imagenes[]` un vector de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `img` (la imagen en cuestión, tal y como nos la proporciona la API) y `tipo`, que será `['inline | positioned']`en función de si se trata de un elemento libre o vinculado a un párrafo.
 
 La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre cada uno de estos dos tipos de elementos. Dependiendo de cuál se trate en cada caso optaremos por una u otra estrategia a la hora de asignarle un nombre. Aquí tiramos nuevamentel del *músculo* de V8, recurriendo a sus potentes literales (y a las asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esto en una sola línea.
 
