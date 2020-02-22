@@ -75,5 +75,7 @@ imagenes.map((i, p) => {
 });
 ```
 
+Y eso es todo.
+
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
