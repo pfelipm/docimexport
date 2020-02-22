@@ -6,7 +6,7 @@ DocImExport es un script para documentos de texto de Google que extrae todas las
 
 Estos elementos pueden estar situados en el **cuerpo**, **encabezado** o **pie de página**, dentro de tablas o elementos de numeración o viñetas y estar posicionados de manara intercalada, ajustados al texto o intercalados entre otros elementos.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75083181-a93a4b00-5517-11ea-9742-be03d97958d9.gif"</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75083257-24036600-5518-11ea-989e-9e77ab75fcb4.gif"</p>
 
 DocImExport genera una carpeta con este nombre:
 
