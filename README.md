@@ -26,7 +26,7 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo de la carpeta es una estrategia para tratar de realizar su identifición sin errores.
 
-Para utilizarlo en tus propios documentos tienes 2 opciones:
+Para utilizarlo en tus propios documentos tienes dos posibilidades
 
 1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs`de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
 2. Hazte una copia de esto :point_right: [DocImExport # plantilla](https://docs.google.com/document/d/1UXYbNEDxyAiqAQ8gFcUno-p53Rp2udo0_JCRsw-7_ro/template/preview) :point_left:.
