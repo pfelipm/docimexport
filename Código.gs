@@ -1,10 +1,14 @@
 /**
- * Exporta los siguientes elementos gráficos presentes en el documento (cuerpo, encabezado, pie):
- * - Imágenes insertadas
- * - Gráficos de hdc
+ * DocImExport es un script para documentos de texto de Google que extrae
+ * todas las imágenes del documento y las archiva en una subcarpeta junto al propio documento.
+ * Específicamente, se extraen los siguientes elementos:
+ * - Imágenes insertadas.
+ * - Gráficos procedentes de una hoja de cálculo existente o creada en el propio documento.
  * - Gráficos creados dentro de documento
- * - Dibujos *insertados* desde Drive, vinculados o no
- * ...con posicionamiento libre o ajuste de párrafo, en tabla, elementos de numeración o viñetas.
+ * - Dibujos insertados desde Drive, vinculados o no
+ * Estos elementos pueden encontrarse en el cuerpo, encabezado o pie de página,
+ * dentro de tablas o elementos de numeración o viñetas y estar posicionados de manera
+ * intercalada, ajustados al texto o intercalados entre otros elementos.
  *
  * MIT License
  * Copyright (c) 2020 Pablo Felip Monferrer(@pfelipm)
@@ -33,7 +37,6 @@ function exportar() {
   // Añadir imágenes en línea
   
   inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
-
 
   // Añadir imágenes con posicionamiento respecto a párrafo
 
@@ -66,4 +69,5 @@ function exportar() {
     
     carpetaExp.createFile(i.img.getBlob().setName(nombre));
   });
+
  }
