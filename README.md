@@ -15,7 +15,7 @@ DocImExport genera una carpeta con este nombre:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082309-3c24b680-5513-11ea-8f73-396b39d315c6.png"></p>
 
-Las imágenes se exportan en su formato original, utilizando esta nomenclatura:
+Las imágenes se exportan en su formato original. Gráficos y dibujos, por su parte, en `png`. Se utiliza la siguiente nomenclatura en el nombre de los archivos:
 
 `Numeral con relleno de 0s` `Texto alternativo` (si existe) o `Imagen [de párrafo] sin título` 
 
@@ -51,7 +51,7 @@ var inlineImages = [...doc.getBody().getImages(), ...doc.getHeader().getImages()
 // Añadir imágenes en línea
 inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
 ```
-Google Docs considera elementos de tipo imagen tanto las imágenes convencionales como los gráficos de hoja de cálculo (insertados o creados en el documento) y a los dibujos, aunque en este caso solo a los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
+Google Docs considera elementos de tipo imagen tanto las insertadas o pegadas de manera convencional como los gráficos de hoja de cálculo (insertados o creados en el documento), así como los dibujos, aunque en este caso solo los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio de Documentos GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
 
 Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, `.getImages()` no será capaz de enumerarla. Curiosamente, esto no es así en el caso de que la entidad aparezca dentro de una lista de elementos, numerada o no. Personalmente no encuentro esta decisión de diseño especialmente razonable, pero es lo que hay. Y por eso tenemos que hacer más cosas para identificar el resto de elementos de tipo imagen: deberemos recorrer todos los párrafos para localizar las imágenes que pudieran *colgar* de ellos. De esto se encargan estas líneas:
 
@@ -59,22 +59,30 @@ Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, 
 var parrafos = [...doc.getBody().getParagraphs(), ...doc.getHeader().getParagraphs(), ...doc.getFooter().getParagraphs()];
 parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi, tipo: 'positioned'});});});
 ```
-Tras esto tendremos en `imagenes[]` un vector de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `.img` (la imagen en cuestión, tal y como nos la proporciona la API) y `.tipo`, que será `['inline | positioned']` en función de si se trata de un elemento libre o vinculado a un párrafo, respectivamente.
+Tras esto tendremos en `imagenes[]` una lista de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `.img` (la imagen en cuestión, tal y como nos la proporciona la API) y `.tipo`, que será `['inline | positioned']` en función de si se trata de un elemento libre ([InlineImage](https://developers.google.com/apps-script/reference/document/inline-image) en el servicio de Documentos GAS) o vinculado a un párrafo ([PositionedImage](https://developers.google.com/apps-script/reference/document/positioned-image)), respectivamente.
 
-La segunda cuestión tiene que ver con los métodos que pueden utilizarse sobre cada uno de estos dos tipos de elementos. Si tiramos por la calle de enmedio y los  usamos indiscriminadamente conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí luciremos nuevamente el músculo ES6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
+Los métodos que pueden utilizarse sobre cada una de estas dos entidades no son exactamente los mismos. Si tiramos por la calle de enmedio y no prestamos atención a este aspecto conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí luciremos nuevamente el músculo ES6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones condicionales con `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
 
 ```javascript
 // Exportar imágenes
 // Las imágenes con ajustes de texto no tienen getAltTitle(), getType(), getAttributes()... pero sí getId()
 
-imagenes.map((i, p) => {
+var nDigitos = parseInt(imagenes.length).toString().length;
 
-  // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen sin título'
-  let nombre = `${p + 1} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
+  imagenes.map((i, p) => {
+   
+    // Genera prefijo numeral con relleno de 0's para facilitar ordenación en lista de archivos
+                              
+    let prefijoNum = '0'.repeat(nDigitos).substring(0, nDigitos - (p + 1).toString().length) + (p + 1);      
 
-  // Exportar imagen en su formato original ¡GIF pierde animación! 😒
-  carpetaExp.createFile(i.img.getBlob().setName(nombre));
-});
+    // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen [de párrafo] sin título'
+
+    let nombre = `${prefijoNum} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
+
+    // Exportar imagen en su formato original ¡GIF pierde animación! 😒
+    
+    carpetaExp.createFile(i.img.getBlob().setName(nombre));
+  });
 ```
 
 Y eso es todo.
