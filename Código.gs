@@ -63,7 +63,7 @@ function exportar() {
 
   imagenes.map((i, p) => {
    
-    // Generar prefijo numeral con relleno de 0's para facilitar ordenación en lista de archivos
+    // Genera prefijo numeral con relleno de 0's para facilitar ordenación en lista de archivos
                               
     let prefijoNum = '0'.repeat(nDigitos).substring(0, nDigitos - (p + 1).toString().length) + (p + 1);      
 
