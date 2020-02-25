@@ -56,7 +56,7 @@ function exportar() {
   }
   carpetaExp = carpeta.createFolder(nombreCarpeta);
 
-  // Exportar imágenes
+  // Exporta imágenes
   // Las imágenes con ajustes de texto no tienen getAltTitle(), getType(), getAttributes()... pero sí getId()
 
   var nDigitos = parseInt(imagenes.length).toString().length;
@@ -69,7 +69,7 @@ function exportar() {
 
     // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen [de párrafo] sin título'
 
-    let nombre = prefijoNum + ` ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
+    let nombre = `${prefijoNum} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
 
     // Exportar imagen en su formato original ¡GIF pierde animación! 😒
     
