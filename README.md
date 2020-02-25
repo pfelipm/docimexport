@@ -17,7 +17,7 @@ DocImExport genera una carpeta con este nombre:
 
 Las imágenes se exportan en su formato original, utilizando esta nomenclatura:
 
-`Numeral` `Texto alternativo` (si existe) o `Imagen [de párrafo] sin título` 
+`Numeral con relleno de 0s` `Texto alternativo` (si existe) o `Imagen [de párrafo] sin título` 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082667-008aec00-5515-11ea-974a-775430328fdb.png"</p>
 
