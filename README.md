@@ -1,3 +1,4 @@
+![Banner acercaDe](https://user-images.githubusercontent.com/12829262/75261119-e0944a80-57ea-11ea-8f70-2740a8358de4.png)
 # ¿Qué es DocImExport?
 DocImExport es un script para documentos de texto de Google que extrae todas las imágenes del documento y las archiva en una subcarpeta junto al propio documento. Específicamente, se extraen los siguientes elementos:
 - Imágenes insertadas (`Insertar` ⏩ `Imagen`).
