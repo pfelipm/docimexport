@@ -44,7 +44,7 @@ Como siempre, miramos bajo el capó ⚙️🔧.
 
 Aunque se trata de un script muy sencillo que no tiene mucho misterio y que ha surgido para dar una respuesta rápida a una necesidad personal, me gustaría destacar dos cosas. Vamos con la primera.
 
-El uso de V8 como motor de ejecución Apps Script permite utilizar el operador de propagación `...` para concatenar vectores. Gracias a él, podemos obtener todas de manera consolidada las imágenes de cuerpo, encabezado y pie de página del documento *empalmando* el resultado de sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
+El uso de V8 como motor de ejecución Apps Script permite utilizar el operador de propagación `...` para concatenar vectores. Gracias a él, podemos obtener de manera consolidada todas las imágenes de cuerpo, encabezado y pie de página del documento *empalmando* el resultado de sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
 // Obtener imágenes que no tienen ajustes de texto, se comprueba si body, header, footer existen
