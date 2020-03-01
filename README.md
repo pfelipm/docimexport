@@ -45,18 +45,31 @@ Aunque se trata de un script muy sencillo que ha surgido para dar una respuesta 
 El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
-// Obtener imágenes que no tienen ajustes de texto y párrafos
-var inlineImages = [...doc.getBody().getImages(), ...doc.getHeader().getImages(), ...doc.getFooter().getImages()];
+// Obtener imágenes que no tienen ajustes de texto, se comprueba si hay body, header, footer existen
+
+var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
+                    ...doc.getHeader() != null ? doc.getHeader().getImages() : [],
+                    ...doc.getFooter() != null ? doc.getFooter().getImages() : [],
+                   ];
 
 // Añadir imágenes en línea
+
 inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
 ```
+Se utiliza el operador de comparación (`?`) para determinar si el documento tiene realmente secciones de cuerpo (`body`), encabezado (`header`) y pie de página (`footer`) antes de tratar de recuperar sus imágenes.
+
 Google Docs considera elementos de tipo imagen tanto las insertadas o pegadas de manera convencional como los gráficos de hoja de cálculo (insertados o creados en el documento), así como los dibujos, aunque en este caso solo los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio de Documentos GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
 
 Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, `.getImages()` no será capaz de enumerarla. Curiosamente, esto no es así en el caso de que la entidad aparezca dentro de una lista de elementos, numerada o no. Personalmente no encuentro esta decisión de diseño especialmente razonable, pero es lo que hay. Y por eso tenemos que hacer más cosas para identificar el resto de elementos de tipo imagen: deberemos recorrer todos los párrafos para localizar las imágenes que pudieran *colgar* de ellos. De esto se encargan estas líneas:
 
 ```javascript
-var parrafos = [...doc.getBody().getParagraphs(), ...doc.getHeader().getParagraphs(), ...doc.getFooter().getParagraphs()];
+// Obtener párrafos, se comprueba si hay body, header, footer existen
+
+var parrafos = [...doc.getBody() != null ? doc.getBody().getParagraphs() : [],
+                    ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
+                    ...doc.getFooter() != null ? doc.getFooter().getParagraphs() : [],
+                   ];
+                     
 parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi, tipo: 'positioned'});});});
 ```
 Tras esto tendremos en `imagenes[]` una lista de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `.img` (la imagen en cuestión, tal y como nos la proporciona la API) y `.tipo`, que será `['inline | positioned']` en función de si se trata de un elemento libre ([InlineImage](https://developers.google.com/apps-script/reference/document/inline-image) en el servicio de Documentos GAS) o vinculado a un párrafo ([PositionedImage](https://developers.google.com/apps-script/reference/document/positioned-image)), respectivamente.
