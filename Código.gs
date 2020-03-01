@@ -30,7 +30,7 @@ function exportar() {
   
   var imagenes = []; // Vector de imágenes del documento
   
-  // Obtener (a) imágenes que no tienen ajustes de texto y (b) párrafos del documento, se comprueba si body, header, footer existen
+  // Obtener (a) imágenes que no tienen ajustes de texto y (b) párrafos del documento, se comprueba si hay body, header, footer existen
   
   var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
                       ...doc.getHeader() != null ? doc.getHeader().getImages() : [],
