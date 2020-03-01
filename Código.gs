@@ -38,9 +38,9 @@ function exportar() {
                      ];
   
   var parrafos = [...doc.getBody() != null ? doc.getBody().getParagraphs() : [],
-                      ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
-                      ...doc.getFooter() != null ? doc.getFooter().getParagraphs() : [],
-                     ];
+                  ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
+                  ...doc.getFooter() != null ? doc.getFooter().getParagraphs() : [],
+                 ];
   
   // Añadir imágenes en línea
   
