@@ -102,9 +102,9 @@ var nDigitos = parseInt(imagenes.length).toString().length;
   });
 ```
 
-Y eso es todo. Quizás lo natural sería empaquetar esto en un complementos para documentos de Google, añadiéndole de paso alguna cosilla más que se me ocurre, para tenerlo siempre a mano en lugar de andar copiando y pegando código. Personalmente lo que hago por ahora es utilizar la imprescindible extensión para Chrome [GAS GitHub Assistant](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo) para invocar estas pocas líneas de código desde su repositorio en GitHub al editor GAS del documento donde lo necesito.
+Y eso es todo. Quizás lo natural sería empaquetar esto en un complementos para documentos de Google, añadiéndole de paso alguna cosilla más que se me ocurre, para tenerlo siempre a mano en lugar de andar copiando y pegando código. Personalmente lo que hago por ahora es utilizar la imprescindible extensión para Chrome [GAS GitHub Assistant](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo) en el editor Apps Script del documento donde lo necesito para invocar el código de DocImExport desde su repositorio en GitHub.
 
-![githubassistant](https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)¡
+![githubassistant](https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)
 
 # Licencia
 © 2020 Pablo Felip Monferrer ([@pfelipm](https://twitter.com/pfelipm)). Se distribuye bajo licencia MIT.
