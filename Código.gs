@@ -54,7 +54,7 @@ function exportar() {
 
   if (imagenes.length == 0) {
     
-    DocumentApp.getUi().alert('❌ No hay imágenes que exportar');
+    DocumentApp.getUi().alert('❌ ¡No hay imágenes que exportar!');
     
   } else {
 
