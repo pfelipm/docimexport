@@ -21,7 +21,7 @@ Las imágenes se exportan en su formato original. Gráficos y dibujos, por su pa
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082667-008aec00-5515-11ea-974a-775430328fdb.png"</p>
 
-El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo** en imágenes, dibujos y gráficos para facilitar su identificación una vez exportados. Este texto es visible al situar el ratón sobre ellos. Para conseguirlo basta hacer clic con el botón derecho del ratón sobre uno de estos elementos y a continuación en `Texto alternativo`,  o simplemente seleccionando el elemento y presionando `CTRL+ALT+Y`.
+El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo** en imágenes, dibujos y gráficos para facilitar su identificación una vez exportados. Este texto es visible al situar el ratón sobre ellos. Para conseguirlo basta hacer clic con el botón derecho del ratón sobre uno de estos elementos y a continuación en `Texto alternativo`,  o simplemente seleccionar el elemento y presionando `CTRL+ALT+Y`.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082576-92462980-5514-11ea-99a6-5341b03d92ac.gif"></p>
 
