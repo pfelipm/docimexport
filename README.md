@@ -69,9 +69,9 @@ Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, 
 // Obtener párrafos, se comprueba si body, header, footer existen
 
 var parrafos = [...doc.getBody() != null ? doc.getBody().getParagraphs() : [],
-                    ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
-                    ...doc.getFooter() != null ? doc.getFooter().getParagraphs() : [],
-                   ];
+                ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
+                ...doc.getFooter() != null ? doc.getFooter().getParagraphs() : [],
+               ];
                      
 parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi, tipo: 'positioned'});});});
 ```
