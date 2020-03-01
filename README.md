@@ -40,7 +40,7 @@ DocImExport presenta en estos momentos las siguientes limitaciones:
 
 # Detalles técnicos
 
-Como siempre, miramos bajo el capó.
+Como siempre, miramos bajo el capó ⚙️🔧.
 
 Aunque se trata de un script muy sencillo que no tiene mucho misterio y que ha surgido para dar una respuesta rápida a una necesidad personal, me gustaría destacar dos cosas. Vamos con la primera.
 
