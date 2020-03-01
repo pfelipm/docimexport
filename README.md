@@ -45,7 +45,7 @@ Aunque se trata de un script muy sencillo que ha surgido para dar una respuesta 
 El uso de V8 permite utilizar el operador de propagación para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
-// Obtener imágenes que no tienen ajustes de texto, se comprueba si hay body, header, footer existen
+// Obtener imágenes que no tienen ajustes de texto, se comprueba si body, header, footer existen
 
 var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
                     ...doc.getHeader() != null ? doc.getHeader().getImages() : [],
@@ -63,7 +63,7 @@ Google Docs considera elementos de tipo imagen tanto las insertadas o pegadas de
 Pero si alguna de estas entidades de tipo imagen está vinculada a un párrafo, `.getImages()` no será capaz de enumerarla. Curiosamente, esto no es así en el caso de que la entidad aparezca dentro de una lista de elementos, numerada o no. Personalmente no encuentro esta decisión de diseño especialmente razonable, pero es lo que hay. Y por eso tenemos que hacer más cosas para identificar el resto de elementos de tipo imagen: deberemos recorrer todos los párrafos para localizar las imágenes que pudieran *colgar* de ellos. De esto se encargan estas líneas:
 
 ```javascript
-// Obtener párrafos, se comprueba si hay body, header, footer existen
+// Obtener párrafos, se comprueba si body, header, footer existen
 
 var parrafos = [...doc.getBody() != null ? doc.getBody().getParagraphs() : [],
                     ...doc.getHeader() != null ? doc.getBody().getParagraphs() : [],
