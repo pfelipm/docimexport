@@ -91,6 +91,9 @@ function exportar() {
     
       carpetaExp.createFile(i.img.getBlob().setName(nombre));
     });
+
+    DocumentApp.getUi().alert('✔️️ URL carpeta exportación:\n\n' + carpetaExp.getUrl());
+    
   }
 
 }
