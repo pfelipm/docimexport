@@ -44,7 +44,7 @@ Como siempre, miramos bajo el capó ⚙️🔧.
 
 Aunque se trata de un script muy sencillo que no tiene mucho misterio y que ha surgido para dar una respuesta rápida a una necesidad personal, me gustaría destacar dos cosas. Vamos con la primera.
 
-El uso de V8 permite utilizar el operador de propagación `...` para concatenar vectores. Gracias a él, podemos obtener todas las imágenes de cuerpo, encabezado y pie de página del documento empalmando los devueltos por sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
+El uso de V8 como motor de ejecución Apps Script permite utilizar el operador de propagación `...` para concatenar vectores. Gracias a él, podemos obtener todas de manera consolidada las imágenes de cuerpo, encabezado y pie de página del documento *empalmando* el resultado de sucesivas invocaciones del método `.getImages()` de una manera tan limpia y elegante como esta:
 
 ```javascript
 // Obtener imágenes que no tienen ajustes de texto, se comprueba si body, header, footer existen
@@ -59,7 +59,7 @@ var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
 inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
 ```
 
-Se utiliza el operador de comparación `?` para determinar si el documento tiene realmente secciones de cuerpo (`body`), encabezado (`header`) y pie de página (`footer`) antes de tratar de recuperar sus imágenes. De lo contrario obtendremos errores en tiempo de ejecución al usar el método `.getImages` si alguna de esas secciones está vacía.
+Se utiliza el operador de comparación `?` para determinar si el documento tiene realmente secciones de cuerpo (`body`), encabezado (`header`) y pie de página (`footer`) antes de tratar de recuperar sus imágenes. De lo contrario obtendremos errores en tiempo de ejecución al usar`.getImages()` si alguna de esas secciones está vacía.
 
 Google Docs considera elementos de tipo imagen tanto las insertadas o pegadas de manera convencional como los gráficos de hoja de cálculo (insertados o creados en el documento), así como los dibujos, aunque en este caso solo los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio de Documentos GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
 
@@ -78,7 +78,7 @@ parrafos.map((p) => {p.getPositionedImages().map((pi) => {imagenes.push({img: pi
 
 Tras esto tendremos en `imagenes[]` una lista de objetos con las imágenes que deseamos exportar. Estos objetos contendrán las propiedades `.img` (la imagen en cuestión, tal y como nos la proporciona la API) y `.tipo`, que será `['inline | positioned']` en función de si se trata de un elemento libre ([InlineImage](https://developers.google.com/apps-script/reference/document/inline-image) en el servicio de Documentos GAS) o vinculado a un párrafo ([PositionedImage](https://developers.google.com/apps-script/reference/document/positioned-image)), respectivamente.
 
-Y ahora ls segunda. Los métodos que pueden utilizarse sobre cada una de estas dos entidades no son exactamente los mismos. Si tiramos por la calle de enmedio y no prestamos atención a este aspecto conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí luciremos nuevamente el músculo ES6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones usando el operador condicional `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
+Y ahora la segunda. Los métodos que pueden utilizarse sobre cada una de estas dos entidades no son exactamente los mismos. Si tiramos por la calle de enmedio y no prestamos atención a este aspecto conseguiremos unos estupendos errores en tiempo de ejecución. Y no queremos eso. Por esa razón, discriminaremos mediante `.tipo` y, dependiendo de su valor, optaremos por una u otra estrategia a la hora de asignarle un nombre al archivo en el que se exportará la imagen. Aquí luciremos nuevamente el músculo ES6 de V8, recurriendo a sus potentes [plantillas de cadena de texto](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/template_strings) (y a las compactas y anidables asignaciones usando el operador condicional `?`, aunque esto no es nuevo) para resolver esta circunstancia en una sola línea.
 
 ```javascript
 // Exportar imágenes
