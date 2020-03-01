@@ -59,7 +59,7 @@ var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
 inlineImages.map((i) => {imagenes.push({img: i, tipo: 'inline'});});
 ```
 
-Se utiliza el operador de comparación `?` para determinar si el documento tiene realmente secciones de cuerpo (`body`), encabezado (`header`) y pie de página (`footer`) antes de tratar de recuperar sus imágenes.
+Se utiliza el operador de comparación `?` para determinar si el documento tiene realmente secciones de cuerpo (`body`), encabezado (`header`) y pie de página (`footer`) antes de tratar de recuperar sus imágenes. De lo contrario obtendremos errores en tiempo de ejecución al usar el método `.getImages` si alguna de esas secciones está vacía.
 
 Google Docs considera elementos de tipo imagen tanto las insertadas o pegadas de manera convencional como los gráficos de hoja de cálculo (insertados o creados en el documento), así como los dibujos, aunque en este caso solo los que han sido insertados desde Drive. Los dibujos directamente incrustados en el documento no pueden exportarse como imagen, al menos con el servicio de Documentos GAS convencional... quedaría por ver si esto puede salvarse utilizando la [API avanzada de Docs](https://developers.google.com/docs/api), pero dado que para mí la funcionalidad actual de DocImExport es adecuada ya no me he molestado en averiguarlo... al menos por el momento.
 
