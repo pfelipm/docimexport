@@ -11,7 +11,7 @@ Estos elementos pueden encontrarse en el **cuerpo**, **encabezado** o **pie de p
 
 DocImExport genera una carpeta con este nombre:
 
-`Imágenes` {nombre del documento} - {ID del documento]`
+`Imágenes` {nombre del documento} `-` {ID del documento]`
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082309-3c24b680-5513-11ea-8f73-396b39d315c6.png"></p>
 
