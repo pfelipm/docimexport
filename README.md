@@ -29,7 +29,7 @@ Cada vez que se produce una exportación se elimina la carpeta generada en expor
 
 Para utilizarlo en tus propios documentos tienes dos posibilidades
 
-1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs`de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
+1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs` de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
 2. Hazte una copia de esto :point_right: [DocImExport # plantilla](https://docs.google.com/document/d/1UXYbNEDxyAiqAQ8gFcUno-p53Rp2udo0_JCRsw-7_ro/template/preview) :point_left:.
 
 # Limitaciones
