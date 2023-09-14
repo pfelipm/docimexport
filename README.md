@@ -30,7 +30,7 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
 
-<p align="center"><img src="https://pablofelip.online/media/posts/10/docimexportdemo.gif"></p>
+<img src="https://pablofelip.online/media/posts/10/docimexportdemo.gif">
 
 Para utilizarlo en tus propios documentos tienes dos posibilidades:
 
