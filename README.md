@@ -24,15 +24,13 @@ Las imágenes se exportan en su formato original. Gráficos y dibujos, por su pa
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082667-008aec00-5515-11ea-974a-775430328fdb.png"</p>
 
-El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo** en imágenes, dibujos y gráficos para facilitar su identificación una vez exportados. Este texto es visible al situar el ratón sobre ellos. Para conseguirlo basta hacer clic con el botón derecho del ratón sobre uno de estos elementos y a continuación en `Texto alternativo`,  o simplemente seleccionar el elemento y presionando `CTRL+ALT+Y`.
+El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo** en imágenes, dibujos y gráficos para facilitar su identificación una vez exportados. Este texto es visible al situar el ratón sobre ellos. Para conseguirlo basta hacer clic con el botón derecho del ratón sobre uno de estos elementos y a continuación en `Texto alternativo`,  o simplemente seleccionar el elemento y presionar `CTRL+ALT+Y`.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/267900559-6c41834a-00b0-4583-9418-0ab9dcbcf15e.gif"></p>
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/267893164-cf7a2d63-6cf0-45be-9b11-f65f5b57cd69.gif"></p>
-
-
 
 Para utilizarlo en tus propios documentos tienes dos posibilidades:
 
