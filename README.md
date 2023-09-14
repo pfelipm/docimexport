@@ -30,6 +30,8 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
 
+<p align="center"><img src="[https://user-images.githubusercontent.com/12829262/75082576-92462980-5514-11ea-99a6-5341b03d92ac.gif](https://github.com/pfelipm/docimexport/assets/12829262/cf7a2d63-6cf0-45be-9b11-f65f5b57cd69)"></p>
+
 Para utilizarlo en tus propios documentos tienes dos posibilidades:
 
 1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs` de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
