@@ -27,8 +27,10 @@ function onOpen() {
 function exportar() {
 
   var doc = DocumentApp.getActiveDocument();
-  var imagenes = []; // Vector de imágenes del documento
 
+  // Vector de imágenes del documento
+  var imagenes = [];
+  
   // Obtener (a) imágenes que no tienen ajustes de texto y (b) párrafos del documento, se comprueba si body, header, footer existen
   var inlineImages = [...doc.getBody() != null ? doc.getBody().getImages() : [],
     ...doc.getHeader() != null ? doc.getHeader().getImages() : [],
