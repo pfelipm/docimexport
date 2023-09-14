@@ -10,7 +10,7 @@ DocImExport es un script para documentos de texto de Google que extrae las imág
 
 Estos elementos pueden encontrarse en el **cuerpo**, **encabezado** o **pie de página**, dentro de tablas o elementos de numeración o viñetas y estar posicionados de manera intercalada, ajustados al texto o intercalados entre otros elementos.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75083257-24036600-5518-11ea-989e-9e77ab75fcb4.gif"</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/267894726-ba00cb57-8246-417d-8fda-925454ab14a9.gif"</p>
 
 DocImExport genera una carpeta con este nombre:
 
@@ -26,7 +26,7 @@ Las imágenes se exportan en su formato original. Gráficos y dibujos, por su pa
 
 El valor `numeral` depende del orden de inserción de los elementos gráficos en el documento. Es posible establecer un **texto alternativo** en imágenes, dibujos y gráficos para facilitar su identificación una vez exportados. Este texto es visible al situar el ratón sobre ellos. Para conseguirlo basta hacer clic con el botón derecho del ratón sobre uno de estos elementos y a continuación en `Texto alternativo`,  o simplemente seleccionar el elemento y presionando `CTRL+ALT+Y`.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/12829262/75082576-92462980-5514-11ea-99a6-5341b03d92ac.gif"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/12829262/267900559-6c41834a-00b0-4583-9418-0ab9dcbcf15e.gif"></p>
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
 
