@@ -30,7 +30,7 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
 
-(https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)
+<p align="center"><img src="[https://user-images.githubusercontent.com/12829262/75083257-24036600-5518-11ea-989e-9e77ab75fcb4.gif](https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)"</p>
 
 Para utilizarlo en tus propios documentos tienes dos posibilidades:
 
