@@ -103,8 +103,8 @@ imagenes.map((i, p) => {
 });
 ```
 
-**/ Actualizado 15/09/23 \
-**
+**/ Actualizado 15/09/23 \**
+
 Fíjate en esta línea del bloque anterior, que es la encargada de copiar cada imagen a Drive:
 ```
 carpetaExp.createFile(blob.setName(`${nombre}.${blob.getContentType().split('/')[1]}`));
@@ -115,8 +115,8 @@ Realmente, añadir la extensión no es estrictamente necesario, el archivo resul
 
 Me he dado cuenta de esta circunstancia a raíz de [esta reciente publicación](https://pulse.appsscript.info/p/2023/09/how-to-extract-images-from-google-docs-and-google-slides-using-google-apps-script/?utm_source=dlvr.it&utm_medium=linkedin) en AppsScriptPulse que difunde un pequeño script de Amit Agarwal, así que me ha parecido apropiado modificar el código de este repositorio de manera acorde.
 
-**\ Fin de la actualización /
-**
+**\ Fin de la actualización /**
+
 Y eso es todo. Quizás lo natural sería empaquetar esto en un complemento para documentos de Google, añadiéndole de paso alguna cosilla más que se me ocurre, para tenerlo siempre a mano en lugar de andar copiando y pegando código. Personalmente lo que hago por ahora es utilizar la imprescindible extensión para Chrome [GAS GitHub Assistant](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo) en el editor Apps Script del documento donde lo necesito para invocar el código de DocImExport desde su repositorio en GitHub.
 
 ![githubassistant](https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)
