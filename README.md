@@ -4,9 +4,9 @@
 Contexto: [Exportando las imágenes de un Google Doc](https://pablofelip.online/exportando-imagenes-de-google-docs/).
 # ¿Qué es DocImExport?
 DocImExport es un script para documentos de texto de Google que extrae las imágenes del documento y las archiva en una subcarpeta junto al propio documento. Específicamente, se extraen los siguientes elementos:
-- Imágenes insertadas (`Insertar` ⏩ `Imagen`).
-- Gráficos procedentes de una hoja de cálculo existente o creada desde el propio documento (`Insertar` ⏩ `Gráfico`).
-- Dibujos insertados desde Drive, vinculados o no (`Insertar` ⏩ `Dibujo` ⏩ `De Drive`).
+- Imágenes insertadas (`Insertar` → `Imagen`).
+- Gráficos procedentes de una hoja de cálculo existente o creada desde el propio documento (`Insertar` → `Gráfico`).
+- Dibujos insertados desde Drive, vinculados o no (`Insertar` → `Dibujo` → `De Drive`).
 
 Estos elementos pueden encontrarse en el **cuerpo**, **encabezado** o **pie de página**, dentro de tablas o elementos de numeración o viñetas y estar posicionados de manera intercalada, ajustados al texto o intercalados entre otros elementos.
 
@@ -28,13 +28,13 @@ El valor `numeral` depende del orden de inserción de los elementos gráficos en
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/267900559-6c41834a-00b0-4583-9418-0ab9dcbcf15e.gif"></p>
 
-Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta es una estrategia para tratar de realizar su identificación sin errores.
+Cada vez que se produce una exportación se elimina la carpeta generada en exportaciones anteriores, con todo su contenido. El uso del ID del documento como sufijo del nombre de la carpeta constituye una estrategia para tratar de realizar su identificación sin errores.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/12829262/267893164-cf7a2d63-6cf0-45be-9b11-f65f5b57cd69.gif"></p>
 
 Para utilizarlo en tus propios documentos tienes dos posibilidades:
 
-1. Abre el editor GAS de tu documento (`Herramientas` ⏩ `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs` de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` ⏩ `Habilitar ... V8`).
+1. Abre el editor GAS de tu documento (`Herramientas` → `Editor de secuencias de comandos`), pega el código que encontrarás dentro del archivo `Código.gs` de este repositorio y guarda los cambios. Debes asegurarte de que se esté utilizando el nuevo motor GAS JavaScript V8 (`Ejecutar` → `Habilitar ... V8`).
 2. Hazte una copia de esto :point_right: [DocImExport # plantilla](https://docs.google.com/document/d/1UXYbNEDxyAiqAQ8gFcUno-p53Rp2udo0_JCRsw-7_ro/template/preview) :point_left:.
 
 # Limitaciones
@@ -88,18 +88,19 @@ Y ahora la segunda. Los métodos que pueden utilizarse sobre cada una de estas d
 
 var nDigitos = parseInt(imagenes.length).toString().length;
 
-  imagenes.map((i, p) => {
+imagenes.map((i, p) => {
    
-    // Genera prefijo numeral con relleno de 0's para facilitar ordenación en lista de archivos                              
-    let prefijoNum = '0'.repeat(nDigitos).substring(0, nDigitos - (p + 1).toString().length) + (p + 1);      
+  // Genera prefijo numeral con relleno de 0's para facilitar ordenación en lista de archivos                              
+  let prefijoNum = '0'.repeat(nDigitos).substring(0, nDigitos - (p + 1).toString().length) + (p + 1);      
 
-    // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen [de párrafo] sin título'
-    let nombre = `${prefijoNum} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
+  // Si el objeto es de tipo 'inline' usa su AltTitle (si existe), en cualquier otro caso 'Imagen [de párrafo] sin título'
+  let nombre = `${prefijoNum} ${i.tipo == 'inline' ? i.img.getAltTitle() == null ? 'Imagen sin título' : i.img.getAltTitle() : 'Imagen de párrafo sin título'}`;
 
-    // Exporta imagen en su formato original ¡GIF pierde animación a menos que se añada la extensión en el nombre! 😒
-    var blob = i.img.getBlob();
-    carpetaExp.createFile(blob.setName(`${nombre}.${blob.getContentType().split('/')[1]}`));
-  });
+  // Exporta imagen en su formato original ¡GIF pierde animación a menos que se añada la extensión en el nombre! 😒
+  var blob = i.img.getBlob();
+  carpetaExp.createFile(blob.setName(`${nombre}.${blob.getContentType().split('/')[1]}`));
+
+});
 ```
 
 Y eso es todo. Quizás lo natural sería empaquetar esto en un complemento para documentos de Google, añadiéndole de paso alguna cosilla más que se me ocurre, para tenerlo siempre a mano en lugar de andar copiando y pegando código. Personalmente lo que hago por ahora es utilizar la imprescindible extensión para Chrome [GAS GitHub Assistant](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo) en el editor Apps Script del documento donde lo necesito para invocar el código de DocImExport desde su repositorio en GitHub.
