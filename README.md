@@ -1,7 +1,7 @@
 ![Banner acercaDe 300p](https://user-images.githubusercontent.com/12829262/75261421-4c76b300-57eb-11ea-826a-7a01385d2623.png)
 [![Creado con - Google Apps Script](https://img.shields.io/static/v1?label=Creado+con&message=Google+Apps+Script&color=blue&logo=GAS)](https://developers.google.com/apps-script)
 
-Contexto: [Exportando las imágenes de un Google Doc](https://pablofelip.online/exportando-imagenes-de-google-docs/).
+Artículo : [Exportando las imágenes de un Google Doc](https://pablofelip.online/exportando-imagenes-de-google-docs/).
 # ¿Qué es DocImExport?
 DocImExport es un script para documentos de texto de Google que extrae las imágenes del documento y las archiva en una subcarpeta junto al propio documento. Específicamente, se extraen los siguientes elementos:
 - Imágenes insertadas (`Insertar` → `Imagen`).
@@ -103,6 +103,20 @@ imagenes.map((i, p) => {
 });
 ```
 
+**/ Actualizado 15/09/23 \
+**
+Fíjate en esta línea del bloque anterior, que es la encargada de copiar cada imagen a Drive:
+```
+carpetaExp.createFile(blob.setName(`${nombre}.${blob.getContentType().split('/')[1]}`));
+```
+Como puedes ver, el nombre de cada archivo resultante se genera concatenando el patrón de nombre descrito con anterioridad y la extensión, obtenida a partir de la subcadena a la derecha de la `/` de la secuencia de texto que describe el tipo MIME de la imagen. Por ejemplo, algo como `image/png`.
+
+Realmente, añadir la extensión no es estrictamente necesario, el archivo resultante tendrá sin ella el tipo correcto y al descargarlo al sistema de archivos local la extensión se añadirá automáticamente. Todo bien. Pero resulta que las imágenes de tipo GIF del documento que incorporen animación la perderán a menos que se copien a Drive con la extensión correspondiente. Y no, no vale renombrar posteriormente el archivo, por alguna razón quedan completamente estáticas.
+
+Me he dado cuenta de esta circunstancia a raíz de [esta reciente publicación](https://pulse.appsscript.info/p/2023/09/how-to-extract-images-from-google-docs-and-google-slides-using-google-apps-script/?utm_source=dlvr.it&utm_medium=linkedin) en AppsScriptPulse que difunde un pequeño script de Amit Agarwal, así que me ha parecido apropiado modificar el código de este repositorio de manera acorde.
+
+**\ Fin de la actualización /
+**
 Y eso es todo. Quizás lo natural sería empaquetar esto en un complemento para documentos de Google, añadiéndole de paso alguna cosilla más que se me ocurre, para tenerlo siempre a mano en lugar de andar copiando y pegando código. Personalmente lo que hago por ahora es utilizar la imprescindible extensión para Chrome [GAS GitHub Assistant](https://chrome.google.com/webstore/detail/google-apps-script-github/lfjcgcmkmjjlieihflfhjopckgpelofo) en el editor Apps Script del documento donde lo necesito para invocar el código de DocImExport desde su repositorio en GitHub.
 
 ![githubassistant](https://user-images.githubusercontent.com/12829262/75624643-84e50b00-5bb6-11ea-958c-58dfe128b399.png)
