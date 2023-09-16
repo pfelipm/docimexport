@@ -109,7 +109,7 @@ Fíjate en esta línea del bloque anterior, que es la encargada de copiar cada i
 ```
 carpetaExp.createFile(blob.setName(`${nombre}.${blob.getContentType().split('/')[1]}`));
 ```
-Como puedes ver, el nombre de cada archivo resultante se genera concatenando el patrón de nombre descrito con anterioridad y la extensión, obtenida a partir de la subcadena a la derecha de la `/` de la secuencia de texto que describe el tipo MIME de la imagen. Por ejemplo, algo como `image/png`.
+Como puedes ver, el nombre de cada archivo resultante se genera concatenando el patrón de nombre descrito con anterioridad y la extensión, obtenida a partir de la subcadena a la derecha de la `/` de la secuencia de texto que describe el tipo MIME de la imagen (por ejemplo, algo como `image/png`).
 
 Realmente, añadir la extensión no es estrictamente necesario, el archivo resultante tendrá sin ella el tipo correcto y al descargarlo al sistema de archivos local la extensión se añadirá automáticamente. Todo bien. Pero resulta que las imágenes de tipo GIF del documento que incorporen animación la perderán a menos que se copien a Drive con la extensión correspondiente. Y no, no vale renombrar posteriormente el archivo, por alguna razón quedan completamente estáticas.
 
